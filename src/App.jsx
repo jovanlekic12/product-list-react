@@ -1,13 +1,20 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import data from "./data";
+import Item from "./item";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [items, setItems] = useState(data);
 
   return (
     <>
+      <ul>
+        {items.map((item) => {
+          return items && <Item {...item} key={item.id} />;
+        })}
+      </ul>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

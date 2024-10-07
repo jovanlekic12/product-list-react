@@ -1,4 +1,4 @@
-const items = [
+const data = [
   {
     id: 1,
     category: "Macaron",
@@ -48,3 +48,5 @@ const items = [
     img: "./images/brownie.jpg",
   },
 ];
+
+export default data;

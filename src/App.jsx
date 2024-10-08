@@ -1,6 +1,7 @@
 import { useState } from "react";
 import data from "./data";
 import Item from "./item";
+import CartItem from "./cartItem";
 import "./App.css";
 
 function App() {
@@ -32,7 +33,11 @@ function App() {
         {cartItems.length === 0 ? (
           <p className="cart__p">Your cart is empty</p>
         ) : (
-          <ul className="cart__list"></ul>
+          <ul className="cart__list">
+            {cartItems.map((cartItem) => {
+              return cartItems && <CartItem {...cartItem} key={cartItem.id} />;
+            })}
+          </ul>
         )}
       </aside>
     </main>

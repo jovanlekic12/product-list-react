@@ -9,7 +9,7 @@ function App() {
 
   function addItemHandler(id) {
     const newItem = items.find((item) => item.id === id);
-    setCartItems((prev) => prev.push(newItem));
+    setCartItems((prev) => [...prev, newItem]);
     console.log(newItem);
   }
 

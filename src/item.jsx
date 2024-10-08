@@ -1,17 +1,8 @@
 import { useState } from "react";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 function Item(props) {
-  const {
-    id,
-    category,
-    name,
-    price,
-    amount,
-    img,
-    addItemHandler,
-    isInCart,
-    setIsInCart,
-  } = props;
+  const { id, category, name, price, amount, img, addItemHandler, isInCart } =
+    props;
   return (
     <li className="list__item">
       <div className="image__container">
@@ -26,7 +17,6 @@ function Item(props) {
           <button
             onClick={() => {
               addItemHandler(id);
-              setIsInCart(!isInCart);
             }}
             className="add__btn"
           >

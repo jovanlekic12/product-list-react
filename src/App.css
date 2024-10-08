@@ -177,3 +177,18 @@ aside {
   color: #e5851e;
   transition: all 0.5s;
 }
+
+.total__container {
+  display: flex;
+  font-size: 2rem;
+  justify-content: space-between;
+}
+
+.confirm__order__btn {
+  background-color: #e5851e;
+  font-size: 3rem;
+  padding: 1.5rem 0;
+  border-radius: 5rem;
+  border: none;
+  color: #fff;
+}

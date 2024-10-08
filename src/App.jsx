@@ -7,14 +7,26 @@ import "./App.css";
 function App() {
   const [items, setItems] = useState(data);
   const [cartItems, setCartItems] = useState([]);
-  const [isInCart, setIsInCart] = useState(false);
+  const totalPrice = calculateTotalPrice();
+
+  function calculateTotalPrice() {
+    let totalPrice = 0;
+    for (let i = 0; i < cartItems.length; i++) {
+      totalPrice += cartItems[i].price * cartItems[i].amount;
+    }
+    return Math.trunc(totalPrice);
+  }
 
   function handleDeleteItem(id) {
+    const newItem = items.find((item) => item.id === id);
+    newItem.isInCart = false;
+    setCartItems((prev) => [...prev, newItem]);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   }
 
   function addItemHandler(id) {
     const newItem = items.find((item) => item.id === id);
+    newItem.isInCart = true;
     setCartItems((prev) => [...prev, newItem]);
     console.log(newItem);
   }
@@ -46,12 +58,15 @@ function App() {
                     {...cartItem}
                     key={cartItem.id}
                     handleDeleteItem={handleDeleteItem}
-                    isInCart={isInCart}
-                    setIsInCart={setIsInCart}
                   />
                 )
               );
             })}
+            <div className="total__container">
+              <h1>Total:</h1>
+              <h1>${totalPrice.toFixed(2)}</h1>
+            </div>
+            <button className="confirm__order__btn">Confirm Order</button>
           </ul>
         )}
       </aside>

@@ -7,6 +7,11 @@ import "./App.css";
 function App() {
   const [items, setItems] = useState(data);
   const [cartItems, setCartItems] = useState([]);
+  const [isInCart, setIsInCart] = useState(false);
+
+  function handleDeleteItem(id) {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  }
 
   function addItemHandler(id) {
     const newItem = items.find((item) => item.id === id);
@@ -35,7 +40,17 @@ function App() {
         ) : (
           <ul className="cart__list">
             {cartItems.map((cartItem) => {
-              return cartItems && <CartItem {...cartItem} key={cartItem.id} />;
+              return (
+                cartItems && (
+                  <CartItem
+                    {...cartItem}
+                    key={cartItem.id}
+                    handleDeleteItem={handleDeleteItem}
+                    isInCart={isInCart}
+                    setIsInCart={setIsInCart}
+                  />
+                )
+              );
             })}
           </ul>
         )}

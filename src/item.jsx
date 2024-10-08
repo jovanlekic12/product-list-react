@@ -1,8 +1,17 @@
 import { useState } from "react";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 function Item(props) {
-  const { id, category, name, price, amount, img, addItemHandler } = props;
-  const [isInCart, setIsInCart] = useState(false);
+  const {
+    id,
+    category,
+    name,
+    price,
+    amount,
+    img,
+    addItemHandler,
+    isInCart,
+    setIsInCart,
+  } = props;
   return (
     <li className="list__item">
       <div className="image__container">
@@ -17,7 +26,7 @@ function Item(props) {
           <button
             onClick={() => {
               addItemHandler(id);
-              setIsInCart(true);
+              setIsInCart(!isInCart);
             }}
             className="add__btn"
           >
@@ -28,7 +37,7 @@ function Item(props) {
       <div className="info__container">
         <h1 className="category">{category}</h1>
         <h1 className="name">{name}</h1>
-        <h1 className="price">${price}</h1>
+        <h1 className="price">${price.toFixed(2)}</h1>
       </div>
     </li>
   );

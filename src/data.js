@@ -6,6 +6,7 @@ const data = [
     price: 8,
     amount: 1,
     img: "./images/macaron.jpg",
+    isInCart: false,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const data = [
     price: 4,
     amount: 1,
     img: "./images/baklava.jpg",
+    isInCart: false,
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const data = [
     price: 7,
     amount: 1,
     img: "./images/creme.jpg",
+    isInCart: false,
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ const data = [
     price: 5.5,
     amount: 1,
     img: "./images/tiramisu.jpg",
+    isInCart: false,
   },
   {
     id: 5,
@@ -38,6 +42,7 @@ const data = [
     price: 4.5,
     amount: 1,
     img: "./images/cake.jpg",
+    isInCart: false,
   },
   {
     id: 6,
@@ -46,6 +51,7 @@ const data = [
     price: 5.5,
     amount: 1,
     img: "./images/brownie.jpg",
+    isInCart: false,
   },
 ];
 

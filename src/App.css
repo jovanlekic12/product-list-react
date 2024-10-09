@@ -255,10 +255,53 @@ aside {
   background-color: #e5851e;
   color: #fff;
   transition: all 0.5s;
+  margin-top: 2rem;
 }
 
 .modal button:hover {
   background-color: #d17718;
   cursor: pointer;
   transition: all 0.5s;
+}
+
+.modal__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0;
+  width: 100%;
+}
+
+.overlay__list__item img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+}
+
+.overlay__list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #9e776b;
+}
+
+.overlay__list__item__img__container {
+  display: flex;
+  align-items: center;
+}
+
+.overlay__list__item__name__container {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-left: 2rem;
+}
+
+.overlay__list__item__amount__container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }

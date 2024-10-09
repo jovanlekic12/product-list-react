@@ -2,12 +2,14 @@ import { useState } from "react";
 import data from "./data";
 import Item from "./item";
 import CartItem from "./cartItem";
+import OverlayItem from "./overlayItem";
 import { CiCircleCheck } from "react-icons/ci";
 import "./App.css";
 
 function App() {
   const [items, setItems] = useState(data);
   const [cartItems, setCartItems] = useState([]);
+  const [isOrder, setIsOrder] = useState(false);
   const totalPrice = calculateTotalPrice();
 
   function decreaseQuantity(id) {
@@ -68,7 +70,7 @@ function App() {
     const newItem = items.find((item) => item.id === id);
     newItem.isInCart = true;
     setCartItems((prev) => [...prev, newItem]);
-    console.log(newItem);
+    console.log(cartItems);
   }
 
   return (
@@ -112,16 +114,33 @@ function App() {
               <h1>Total:</h1>
               <h1>${totalPrice.toFixed(2)}</h1>
             </div>
-            <button className="confirm__order__btn">Confirm Order</button>
+            <button
+              onClick={() => setIsOrder(!isOrder)}
+              className="confirm__order__btn"
+            >
+              Confirm Order
+            </button>
           </ul>
         )}
       </aside>
-      <div className="overlay">
+      <div className={isOrder ? "overlay" : "overlay hide"}>
         <div className="modal">
           <CiCircleCheck />
           <h1>Order Confirmed</h1>
           <p className="modal__second__title">We hope you enjoy your food!</p>
-          <ul className="modal__list"></ul>
+          <ul className="modal__list">
+            {cartItems.map((cartItem) => {
+              return (
+                cartItems && (
+                  <OverlayItem
+                    {...cartItem}
+                    key={cartItem.id}
+                    handleDeleteItem={handleDeleteItem}
+                  />
+                )
+              );
+            })}
+          </ul>
           <div className="modal__total__container">
             <p className="modal__total__p">Order Total:</p>
             <h2>${totalPrice.toFixed(2)}</h2>

@@ -1,17 +1,27 @@
 import { useState } from "react";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 function Item(props) {
-  const { id, category, name, price, amount, img, addItemHandler, isInCart } =
-    props;
+  const {
+    id,
+    category,
+    name,
+    price,
+    amount,
+    img,
+    addItemHandler,
+    isInCart,
+    increaseQuantity,
+    decreaseQuantity,
+  } = props;
   return (
     <li className="list__item">
       <div className="image__container">
         <img src={img} alt="" className="item__img" />
         {isInCart ? (
           <button className="amount__button">
-            <CiCircleMinus />
+            <CiCircleMinus onClick={() => decreaseQuantity(id)} />
             {amount}
-            <CiCirclePlus />
+            <CiCirclePlus onClick={() => increaseQuantity(id)} />
           </button>
         ) : (
           <button

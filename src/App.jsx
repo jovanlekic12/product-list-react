@@ -9,6 +9,44 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const totalPrice = calculateTotalPrice();
 
+  function decreaseQuantity(id) {
+    const newItems = items.map((item) => {
+      if (item.id === id && item.amount > 1) {
+        return { ...item, amount: item.amount - 1 };
+      } else {
+        return item;
+      }
+    });
+    const newCartItems = cartItems.map((item) => {
+      if (item.id === id && item.amount > 1) {
+        return { ...item, amount: item.amount - 1 };
+      } else {
+        return item;
+      }
+    });
+    setCartItems(newCartItems);
+    setItems(newItems);
+  }
+
+  function increaseQuantity(id) {
+    const newItems = items.map((item) => {
+      if (item.id === id) {
+        return { ...item, amount: item.amount + 1 };
+      } else {
+        return item;
+      }
+    });
+    const newCartItems = cartItems.map((item) => {
+      if (item.id === id) {
+        return { ...item, amount: item.amount + 1 };
+      } else {
+        return item;
+      }
+    });
+    setCartItems(newCartItems);
+    setItems(newItems);
+  }
+
   function calculateTotalPrice() {
     let totalPrice = 0;
     for (let i = 0; i < cartItems.length; i++) {
@@ -39,7 +77,13 @@ function App() {
           {items.map((item) => {
             return (
               items && (
-                <Item {...item} key={item.id} addItemHandler={addItemHandler} />
+                <Item
+                  {...item}
+                  key={item.id}
+                  increaseQuantity={increaseQuantity}
+                  decreaseQuantity={decreaseQuantity}
+                  addItemHandler={addItemHandler}
+                />
               )
             );
           })}

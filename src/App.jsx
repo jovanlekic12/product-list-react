@@ -2,6 +2,7 @@ import { useState } from "react";
 import data from "./data";
 import Item from "./item";
 import CartItem from "./cartItem";
+import { CiCircleCheck } from "react-icons/ci";
 import "./App.css";
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
   function handleDeleteItem(id) {
     const newItem = items.find((item) => item.id === id);
     newItem.isInCart = false;
+    newItem.amount = 1;
     setCartItems((prev) => [...prev, newItem]);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   }
@@ -114,6 +116,19 @@ function App() {
           </ul>
         )}
       </aside>
+      <div className="overlay">
+        <div className="modal">
+          <CiCircleCheck />
+          <h1>Order Confirmed</h1>
+          <p className="modal__second__title">We hope you enjoy your food!</p>
+          <ul className="modal__list"></ul>
+          <div className="modal__total__container">
+            <p className="modal__total__p">Order Total:</p>
+            <h2>${totalPrice.toFixed(2)}</h2>
+          </div>
+          <button className="new__order__btn">Start New Order</button>
+        </div>
+      </div>
     </main>
   );
 }

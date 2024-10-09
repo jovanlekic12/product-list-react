@@ -85,7 +85,7 @@ aside {
 }
 
 .cart {
-  background-color: #e5d0b3;
+  background-color: transparent;
   min-height: 60rem;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -191,4 +191,74 @@ aside {
   border-radius: 5rem;
   border: none;
   color: #fff;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.modal {
+  align-items: flex-start;
+  background-color: #eee;
+  border-radius: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  font-size: 3rem;
+  padding: 5rem 3rem;
+  width: 70rem;
+  max-height: 100rem;
+}
+
+.modal svg {
+  font-size: 7rem;
+  stroke-width: 1;
+  color: rgb(44, 190, 44);
+}
+
+.modal__second__title {
+  font-size: 2rem;
+  color: #9e776b;
+}
+
+.modal__total__container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.modal button {
+  width: 100%;
+  font-size: 3rem;
+  font-weight: 600;
+  padding: 1.5rem 0;
+  border-radius: 5rem;
+  border: none;
+  background-color: #e5851e;
+  color: #fff;
+  transition: all 0.5s;
+}
+
+.modal button:hover {
+  background-color: #d17718;
+  cursor: pointer;
+  transition: all 0.5s;
 }

@@ -1,5 +1,4 @@
 import { RxCrossCircled } from "react-icons/rx";
-
 function CartItem(props) {
   const { id, name, price, amount, handleDeleteItem } = props;
   const totalItemPrice = calculateTotalPrice();

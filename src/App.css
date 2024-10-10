@@ -278,6 +278,9 @@ aside {
   margin: 3rem 0;
   gap: 3rem;
   width: 100%;
+  max-height: 40rem;
+  overflow-y: scroll;
+  padding-right: 2rem;
 }
 
 .overlay__list__item img {
@@ -321,4 +324,50 @@ aside {
 
 .overlay__list__item__price {
   font-size: 3rem;
+}
+
+.toast {
+  font-size: 2rem;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--default {
+  background-color: #e5851e;
+  color: #fff;
+}
+
+.Toastify__progress-bar {
+  background-color: #fff;
+}
+
+@media (max-width: 1000px) {
+  main {
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+  section {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .item__list {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .app__title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  aside {
+    width: auto;
+  }
+  .modal {
+    width: auto;
+  }
+  .overlay__list__item__name {
+    font-size: 1.5rem;
+  }
+  .modal__notification__title {
+    font-size: 3rem;
+  }
 }

@@ -138,7 +138,7 @@ function App() {
       <div className={isOrder ? "overlay" : "overlay hide"}>
         <div className="modal">
           <CiCircleCheck />
-          <h1>Order Confirmed</h1>
+          <h1 className="modal__notification__title">Order Confirmed</h1>
           <p className="modal__second__title">We hope you enjoy your food!</p>
           <ul className="modal__list">
             {cartItems.map((cartItem) => {
@@ -172,7 +172,8 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme="colored"
+        className="toast"
       />
     </main>
   );

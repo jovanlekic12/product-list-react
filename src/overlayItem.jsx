@@ -14,8 +14,8 @@ function OverlayItem(props) {
         <div className="overlay__list__item__name__container">
           <h1>{name}</h1>
           <div className="overlay__list__item__amount__container">
-            <p>{amount}x</p>
-            <p>${price.toFixed(2)}</p>
+            <p className="overlay__list__item__amount">{amount}x</p>
+            <p className="overlay__list__item__price">${price.toFixed(2)}</p>
           </div>
         </div>
       </div>

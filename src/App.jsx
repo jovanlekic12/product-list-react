@@ -4,6 +4,8 @@ import Item from "./item";
 import CartItem from "./cartItem";
 import OverlayItem from "./overlayItem";
 import { CiCircleCheck } from "react-icons/ci";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
@@ -11,6 +13,16 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isOrder, setIsOrder] = useState(false);
   const totalPrice = calculateTotalPrice();
+  const notify = () => toast("Your order is getting ready!");
+  function handleStartNewOrder() {
+    const newItems = items.map((item) => {
+      return { ...item, amount: 1, isInCart: false };
+    });
+    setItems(newItems);
+    setCartItems([]);
+    setIsOrder(false);
+    notify();
+  }
 
   function decreaseQuantity(id) {
     const newItems = items.map((item) => {
@@ -145,9 +157,23 @@ function App() {
             <p className="modal__total__p">Order Total:</p>
             <h2>${totalPrice.toFixed(2)}</h2>
           </div>
-          <button className="new__order__btn">Start New Order</button>
+          <button onClick={handleStartNewOrder} className="new__order__btn">
+            Start New Order
+          </button>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </main>
   );
 }

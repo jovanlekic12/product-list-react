@@ -21,6 +21,8 @@ main {
 
 aside {
   width: 20%;
+  position: sticky;
+  top: 0;
 }
 
 .app__title {
@@ -168,6 +170,7 @@ aside {
 .amount__button svg {
   font-size: 3rem;
   border-radius: 50%;
+  stroke-width: 1;
   transition: all 0.5s;
 }
 

@@ -74,7 +74,6 @@ function App() {
     const newItem = items.find((item) => item.id === id);
     newItem.isInCart = false;
     newItem.amount = 1;
-    setCartItems((prev) => [...prev, newItem]);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   }
 
@@ -84,7 +83,7 @@ function App() {
     setCartItems((prev) => [...prev, newItem]);
     console.log(cartItems);
   }
-
+  //vidi kako da za modal iskoristis react.portal
   return (
     <main>
       <section>

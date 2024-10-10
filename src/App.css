@@ -361,6 +361,9 @@ aside {
   aside {
     width: auto;
   }
+  .cart {
+    min-height: 10rem;
+  }
   .modal {
     width: auto;
   }

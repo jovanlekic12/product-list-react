@@ -1,6 +1,6 @@
 import OverlayItem from "./overlayItem";
+import ReactDOM from "react-dom";
 import { CiCircleCheck } from "react-icons/ci";
-
 function Overlay(props) {
   const {
     cartItems,
@@ -9,7 +9,7 @@ function Overlay(props) {
     handleStartNewOrder,
     handleDeleteItem,
   } = props;
-  return (
+  return ReactDOM.createPortal(
     <div className={isOrder ? "overlay" : "overlay hide"}>
       <div className="modal">
         <CiCircleCheck />
@@ -36,7 +36,8 @@ function Overlay(props) {
           Start New Order
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

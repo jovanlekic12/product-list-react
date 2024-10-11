@@ -1,9 +1,8 @@
 import { useState } from "react";
 import data from "./data";
-import Item from "./item";
+import Section from "./section";
 import Cart from "./cart";
-import OverlayItem from "./overlayItem";
-import { CiCircleCheck } from "react-icons/ci";
+import Overlay from "./overlay";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -14,6 +13,7 @@ function App() {
   const [isOrder, setIsOrder] = useState(false);
   const totalPrice = calculateTotalPrice();
   const notify = () => toast("Your order is getting ready!");
+
   function handleStartNewOrder() {
     const newItems = items.map((item) => {
       return { ...item, amount: 1, isInCart: false };
@@ -86,52 +86,24 @@ function App() {
   //vidi kako da za modal iskoristis react.portal
   return (
     <main>
-      <section>
-        <h1 className="app__title">DESSERTS</h1>
-        <ul className="item__list">
-          {items.map((item) => {
-            return (
-              items && (
-                <Item
-                  {...item}
-                  key={item.id}
-                  increaseQuantity={increaseQuantity}
-                  decreaseQuantity={decreaseQuantity}
-                  addItemHandler={addItemHandler}
-                />
-              )
-            );
-          })}
-        </ul>
-      </section>
-      <Cart {...cartItems} />
-      <div className={isOrder ? "overlay" : "overlay hide"}>
-        <div className="modal">
-          <CiCircleCheck />
-          <h1 className="modal__notification__title">Order Confirmed</h1>
-          <p className="modal__second__title">We hope you enjoy your food!</p>
-          <ul className="modal__list">
-            {cartItems.map((cartItem) => {
-              return (
-                cartItems && (
-                  <OverlayItem
-                    {...cartItem}
-                    key={cartItem.id}
-                    handleDeleteItem={handleDeleteItem}
-                  />
-                )
-              );
-            })}
-          </ul>
-          <div className="modal__total__container">
-            <p className="modal__total__p">Order Total:</p>
-            <h2>${totalPrice.toFixed(2)}</h2>
-          </div>
-          <button onClick={handleStartNewOrder} className="new__order__btn">
-            Start New Order
-          </button>
-        </div>
-      </div>
+      <Section
+        items={items}
+        addItemHandler={addItemHandler}
+        increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
+      />
+      <Cart
+        cartItems={cartItems}
+        setIsOrder={setIsOrder}
+        handleDeleteItem={handleDeleteItem}
+        totalPrice={totalPrice}
+      />
+      <Overlay
+        cartItems={cartItems}
+        isOrder={isOrder}
+        totalPrice={totalPrice}
+        handleStartNewOrder={handleStartNewOrder}
+      />
       <ToastContainer
         position="top-center"
         autoClose={5000}

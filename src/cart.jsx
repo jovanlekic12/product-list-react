@@ -1,7 +1,7 @@
 import CartItem from "./cartItem";
 
 function Cart(props) {
-  const [cartItems] = props;
+  const { cartItems, setIsOrder, handleDeleteItem, totalPrice } = props;
   return (
     <aside className="cart">
       <h1 className="cart__counter">Your cart ({cartItems.length})</h1>
@@ -25,7 +25,7 @@ function Cart(props) {
             <h1>${totalPrice.toFixed(2)}</h1>
           </div>
           <button
-            onClick={() => setIsOrder(!isOrder)}
+            onClick={() => setIsOrder((prev) => !prev)}
             className="confirm__order__btn"
           >
             Confirm Order
